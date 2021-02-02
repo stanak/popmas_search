@@ -1,20 +1,21 @@
 <template>
   <el-card shadow="always" :body-style="{padding: '0px'}">
     <el-row>
-      <el-col :span="2">
+      <el-col :span="3">
         <el-image
           style="height: 80px"
           fit="contain"
-          :src="data.icon" />
-          <div class="center">
-            <h4>
-              属性
-            </h4>
-            {{ data.attribute }}
-          </div>
+          :src="data.icon"
+        />
+        <div class="center">
+          <h4>
+            属性
+          </h4>
+          {{ data.attribute }}
+        </div>
       </el-col>
 
-      <el-col :span="22">
+      <el-col :span="21">
         <h3 v-if="data.name != ''" class="name">
           {{ data.name }}
         </h3>
@@ -30,13 +31,13 @@
           </span>
         </div>
         <div class="elem">
-          <span v-if=data.range>
+          <span v-if="data.range">
             効果範囲:{{ data.range }}
           </span>
-          <span v-if=data.change>
+          <span v-if="data.change">
             変化数:{{ data.change }}個
           </span>
-          <span v-if=data.time>
+          <span v-if="data.time">
             効果時間:{{ data.time }}秒
           </span>
         </div>

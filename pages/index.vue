@@ -1,11 +1,25 @@
 <template>
   <div>
+    <div class="summary">
+      <h2>ポプマスデータ検索</h2>
+      <ul>
+        <li>
+          ポプマスのデータを多様な絞り込みで一覧します。ユニット結成の参考にどうぞ。
+        </li>
+        <li>
+          <a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>へのデータ追加を手伝って頂ける方は<a href="https://twitter.com/_starnak">@_starnak</a>にコンタクトを取ってください。荒らし対策のためホワイトリスト制です。
+        </li>
+        <li>
+          技術的な話としては、データベースの元となっているのは<a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>で、apps scriptで<a :href="resource">json</a>に変換しています。このページのソースコードは<a href="https://github.com/stanak/popmas_search">ここ</a>です。
+        </li>
+      </ul>
+    </div>
     <el-form ref="form" :model="form" label-width="120px" class="form">
       <el-form-item label="名前">
-        <el-input v-model="form.name"></el-input>
+        <el-input v-model="form.name" class="input" />
       </el-form-item>
       <el-form-item label="説明">
-        <el-input v-model="form.description"></el-input>
+        <el-input v-model="form.description" class="input" />
       </el-form-item>
       <el-form-item label="属性">
         <el-select v-model="form.attribute" placeholder="属性">
@@ -28,7 +42,9 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="clear()">Clear</el-button>
+        <el-button @click="clear()">
+          Clear
+        </el-button>
       </el-form-item>
     </el-form>
     <div v-for="(data, index) in filteredSkillData" :key="index">
@@ -44,8 +60,15 @@ export default {
   component: {
     SkillCard: () => import('~/components/SkillCard')
   },
+  async asyncData ({ $axios }) {
+    const response = await $axios.$get(resource)
+    return {
+      skillData: response
+    }
+  },
   data () {
     return {
+      resource,
       form: {
         name: '',
         description: '',
@@ -143,10 +166,15 @@ export default {
       ]
     }
   },
-  async asyncData ({ $axios }) {
-    const response = await $axios.$get(resource)
-    return {
-      skillData: response
+  computed: {
+    filteredSkillData () {
+      return this.skillData.filter((data) => {
+        const matchName = this.form.name ? data.name.includes(this.form.name) : true
+        const matchDescription = this.form.description ? data.description.includes(this.form.description) : true
+        const matchAttribute = this.form.attribute ? this.form.attribute === data.attribute : true
+        const matchRequiredColour = this.form.requiredColour ? this.form.requiredColour === data.requiredColour : true
+        return matchName && matchDescription && matchAttribute && matchRequiredColour
+      })
     }
   },
   methods: {
@@ -158,23 +186,18 @@ export default {
         requiredColour: ''
       }
     }
-  },
-  computed: {
-    filteredSkillData () {
-      return this.skillData.filter((data) => {
-        const matchName = this.form.name ? data.name.includes(this.form.name) : true
-        const matchDescription = this.form.description ? data.description.includes(this.form.description) : true
-        const matchAttribute = this.form.attribute ? this.form.attribute === data.attribute : true
-        const matchRequiredColour = this.form.requiredColour ? this.form.requiredColour === data.requiredColour : true
-        return matchName && matchDescription && matchAttribute && matchRequiredColour
-      })
-    }
   }
 }
 </script>
 
 <style scoped>
 .form {
-  margin: 10px;
+  margin: 50px;
+}
+.input {
+  width: 100%;
+}
+.summary {
+  margin: 50px;
 }
 </style>
