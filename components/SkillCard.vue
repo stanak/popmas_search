@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="3">
         <el-image
-          style="height: 80px"
+          style="max-width: 80px"
           fit="contain"
           :src="data.icon"
         />
@@ -26,8 +26,8 @@
           {{ data.description }}
         </div>
         <div class="elem">
-          <span :class="{ 'red': data.requiredColour === '赤', 'blue': data.requiredColour === '青', 'yellow': data.requiredColour === '黄', green: data.requiredColour === '緑', purple: data.requiredColour === '紫' }">
-            必要な音符数: {{ `${data.requiredColour}${data.requiredNumber}` }}
+          <span :class="{ 'red': data.requiredColor === '赤', 'blue': data.requiredColor === '青', 'yellow': data.requiredColor === '黄', green: data.requiredColor === '緑', purple: data.requiredColor === '紫' }">
+            必要な音符数: {{ `${data.requiredColor}${data.requiredNumber}` }}
           </span>
         </div>
         <div class="elem">

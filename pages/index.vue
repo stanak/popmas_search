@@ -32,9 +32,9 @@
         </el-select>
       </el-form-item>
       <el-form-item label="必要色">
-        <el-select v-model="form.requiredColour" placeholder="必要色">
+        <el-select v-model="form.requiredColor" placeholder="必要色">
           <el-option
-            v-for="item in colours"
+            v-for="item in colors"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -73,7 +73,7 @@ export default {
         name: '',
         description: '',
         attribute: '',
-        requiredColour: ''
+        requiredColor: ''
       },
       skillData: {},
       attributes: [
@@ -142,7 +142,7 @@ export default {
           label: '闇'
         }
       ],
-      colours: [
+      colors: [
         {
           value: '赤',
           label: '赤'
@@ -172,8 +172,8 @@ export default {
         const matchName = this.form.name ? data.name.includes(this.form.name) : true
         const matchDescription = this.form.description ? data.description.includes(this.form.description) : true
         const matchAttribute = this.form.attribute ? this.form.attribute === data.attribute : true
-        const matchRequiredColour = this.form.requiredColour ? this.form.requiredColour === data.requiredColour : true
-        return matchName && matchDescription && matchAttribute && matchRequiredColour
+        const matchRequiredColor = this.form.requiredColor ? this.form.requiredColor === data.requiredColor : true
+        return matchName && matchDescription && matchAttribute && matchRequiredColor
       })
     }
   },
@@ -183,7 +183,7 @@ export default {
         name: '',
         description: '',
         attribute: '',
-        requiredColour: ''
+        requiredColor: ''
       }
     }
   }
