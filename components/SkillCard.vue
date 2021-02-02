@@ -26,7 +26,7 @@
           {{ data.description }}
         </div>
         <div class="elem">
-          <span :class="{ 'red': data.requiredColor === '赤', 'blue': data.requiredColor === '青', 'yellow': data.requiredColor === '黄', green: data.requiredColor === '緑', purple: data.requiredColor === '紫' }">
+          <span :class="{ 'red-line': data.requiredColor === '赤', 'blue-line': data.requiredColor === '青', 'yellow-line': data.requiredColor === '黄', 'green-line': data.requiredColor === '緑', 'purple-line': data.requiredColor === '紫' }">
             必要な音符数: {{ `${data.requiredColor}${data.requiredNumber}` }}
           </span>
         </div>
@@ -65,29 +65,29 @@ export default {
 .name {
   margin-bottom: 5px;
 }
-.red{
+.red-line{
   border-bottom:solid;
-  border-color:#ff0000;
+  border-color:red;
   border-width:5px;
 }
-.blue{
+.blue-line{
   border-bottom:solid;
-  border-color:#0000ff;
+  border-color:blue;
   border-width:5px;
 }
-.yellow{
+.yellow-line{
   border-bottom:solid;
-  border-color:#ffff00;
+  border-color:yellow;
   border-width:5px;
 }
-.green{
+.green-line{
   border-bottom:solid;
-  border-color:#008000;
+  border-color:green;
   border-width:5px;
 }
-.purple{
+.purple-line{
   border-bottom:solid;
-  border-color:#800080;
+  border-color:purple;
   border-width:5px;
 }
 .elem {
