@@ -54,14 +54,16 @@
 </template>
 
 <script>
+import { jsonp } from 'vue-jsonp'
+
 const resource = 'https://script.google.com/macros/s/AKfycbysa8wIgXc3CIMkzYTUdWOA-gjRQKmtZpFyTo4xeMCXwH2u2VJZqb3TdA/exec'
 
 export default {
   component: {
     SkillCard: () => import('~/components/SkillCard')
   },
-  async asyncData ({ $axios }) {
-    const response = await $axios.$get(resource)
+  async asyncData () {
+    const response = await jsonp(resource, { callbackName: 'callbackFunction' })
     return {
       skillData: response.skill,
       attributeImgUrl: response.attribute
