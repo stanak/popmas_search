@@ -2,16 +2,22 @@
   <el-card shadow="always" :body-style="{padding: '0px'}">
     <el-row>
       <el-col :span="3">
-        <el-image
-          style="max-width: 80px"
-          fit="contain"
-          :src="data.icon"
-        />
         <div class="center">
+          <el-image
+            style="max-width: 80px"
+            fit="contain"
+            :src="data.icon"
+          />
           <h4>
             属性
           </h4>
-          {{ data.attribute }}
+          <span v-if="data.attribute == 'ALL'">ALL</span>
+          <el-image
+            v-else
+            style="max-width: 30px"
+            fit="contain"
+            :src="attributeImgUrl[data.attribute]"
+          />
         </div>
       </el-col>
 
@@ -52,6 +58,10 @@ export default {
     data: {
       type: Object,
       require: true
+    },
+    attributeImgUrl: {
+      type: Object,
+      require: true
     }
   },
   data () {
@@ -66,27 +76,27 @@ export default {
   margin-bottom: 5px;
 }
 .red-line{
-  border-bottom:solid;
+  border-left:solid;
   border-color:red;
   border-width:5px;
 }
 .blue-line{
-  border-bottom:solid;
+  border-left:solid;
   border-color:blue;
   border-width:5px;
 }
 .yellow-line{
-  border-bottom:solid;
+  border-left:solid;
   border-color:yellow;
   border-width:5px;
 }
 .green-line{
-  border-bottom:solid;
+  border-left:solid;
   border-color:green;
   border-width:5px;
 }
 .purple-line{
-  border-bottom:solid;
+  border-left:solid;
   border-color:purple;
   border-width:5px;
 }

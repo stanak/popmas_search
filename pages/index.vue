@@ -48,7 +48,7 @@
       </el-form-item>
     </el-form>
     <div v-for="(data, index) in filteredSkillData" :key="index">
-      <SkillCard :data="data" />
+      <SkillCard :data="data" :attributeImgUrl="attributeImgUrl" />
     </div>
   </div>
 </template>
@@ -63,7 +63,8 @@ export default {
   async asyncData ({ $axios }) {
     const response = await $axios.$get(resource)
     return {
-      skillData: response
+      skillData: response.skill,
+      attributeImgUrl: response.attribute
     }
   },
   data () {
@@ -76,6 +77,7 @@ export default {
         requiredColor: ''
       },
       skillData: {},
+      attributeImgUrl: {},
       attributes: [
         {
           value: 'ALL',
