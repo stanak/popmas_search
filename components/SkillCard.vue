@@ -77,7 +77,8 @@ export default {
 }
 .red-line{
   border-left:solid;
-  border-color:red;
+  border-color:red !important;
+
   border-width:5px;
 }
 .blue-line{
@@ -87,7 +88,7 @@ export default {
 }
 .yellow-line{
   border-left:solid;
-  border-color:yellow;
+  border-color:yellow !important;
   border-width:5px;
 }
 .green-line{
