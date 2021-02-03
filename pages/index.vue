@@ -7,7 +7,7 @@
           ポプマスのデータを多様な絞り込みで一覧します。ユニット結成の参考にどうぞ。何かの役に立ったら<a href="https://seesaawiki.jp/aiko_takamori/">高森藍子</a>を少し応援してやってください。
         </li>
         <li>
-          データである<a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>と<a href="https://drive.google.com/drive/folders/1JNlFbd7RJ9O5OlBso6VZY-pT3NCVCS_A?usp=sharing">Drive</a>の編集は誰でもできます。<a href="https://twitter.com/_starnak">@_starnak</a>にコンタクトを取ってください。荒らし対策のためホワイトリスト制です。
+          データである<a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>と<a href="https://drive.google.com/drive/folders/1JNlFbd7RJ9O5OlBso6VZY-pT3NCVCS_A?usp=sharing">Drive</a>の編集は誰でもできます。要望とか報告等あれば<a href="https://twitter.com/_starnak">@_starnak</a>まで。
         </li>
         <li>
           技術的には、<a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>をapps scriptで<a :href="resource">json</a>に変換しています。このページのソースコードは<a href="https://github.com/stanak/popmas_search">ここ</a>です。
