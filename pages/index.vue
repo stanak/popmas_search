@@ -22,7 +22,7 @@
         <el-input v-model="form.description" class="input" />
       </el-form-item>
       <el-form-item label="属性">
-        <el-select v-model="form.attribute" placeholder="属性">
+        <el-select multiple v-model="form.attribute" placeholder="属性">
           <el-option
             v-for="item in attributes"
             :key="item.value"
@@ -32,7 +32,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="必要色">
-        <el-select v-model="form.requiredColor" placeholder="必要色">
+        <el-select multiple v-model="form.requiredColor" placeholder="必要色">
           <el-option
             v-for="item in colors"
             :key="item.value"
@@ -43,7 +43,7 @@
       </el-form-item>
       <el-form-item>
         <el-button @click="clear()">
-          Clear
+          検索条件クリア
         </el-button>
       </el-form-item>
     </el-form>
@@ -57,6 +57,14 @@
 import { jsonp } from 'vue-jsonp'
 
 const resource = 'https://script.google.com/macros/s/AKfycbysa8wIgXc3CIMkzYTUdWOA-gjRQKmtZpFyTo4xeMCXwH2u2VJZqb3TdA/exec'
+
+// mutipleなselectの実体はただのArrayじゃなかったので、str in arrayが効かず
+const multipleSelectObjHas = (multipleSelectObj, str) => {
+  for (const attr of multipleSelectObj) {
+    if (attr === str) { return true }
+  }
+  return false
+}
 
 export default {
   component: {
@@ -75,8 +83,8 @@ export default {
       form: {
         name: '',
         description: '',
-        attribute: '',
-        requiredColor: ''
+        attribute: [],
+        requiredColor: []
       },
       skillData: {},
       attributeImgUrl: {},
@@ -175,8 +183,8 @@ export default {
       return this.skillData.filter((data) => {
         const matchName = this.form.name ? data.name.includes(this.form.name) : true
         const matchDescription = this.form.description ? data.description.includes(this.form.description) : true
-        const matchAttribute = this.form.attribute ? this.form.attribute === data.attribute : true
-        const matchRequiredColor = this.form.requiredColor ? this.form.requiredColor === data.requiredColor : true
+        const matchAttribute = this.form.attribute.length ? multipleSelectObjHas(this.form.attribute, data.attribute) : true
+        const matchRequiredColor = this.form.requiredColor.length ? multipleSelectObjHas(this.form.requiredColor, data.requiredColor) : true
         return matchName && matchDescription && matchAttribute && matchRequiredColor
       })
     }

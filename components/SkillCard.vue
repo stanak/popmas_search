@@ -7,29 +7,37 @@
             style="max-width: 80px"
             fit="contain"
             :src="data.icon"
-          />
+          >
+            <div slot="error">
+              画像なし
+            </div>
+          </el-image>
           <h4>
             属性
           </h4>
-          <span v-if="data.attribute == 'ALL'">ALL</span>
-          <el-image
-            v-else
-            style="max-width: 30px"
-            fit="contain"
-            :src="attributeImgUrl[data.attribute]"
-          />
+          <div v-if="data.attribute">
+            <span v-if="data.attribute == 'ALL'">ALL</span>
+            <el-image
+              v-else
+              style="max-width: 30px"
+              fit="contain"
+              :src="attributeImgUrl[data.attribute]"
+            />
+          </div>
         </div>
       </el-col>
 
       <el-col :span="21">
-        <h3 v-if="data.name != ''" class="name">
+        <h3 v-if="data.name" class="name">
           {{ data.name }}
         </h3>
         <h3 v-else class="name">
-          未
+          未登録
         </h3>
-        <div>
-          {{ data.description }}
+        <div class="elem" >
+          <span>
+            {{ data.description }}
+          </span>
         </div>
         <div class="elem">
           <span :class="{ 'red-line': data.requiredColor === '赤', 'blue-line': data.requiredColor === '青', 'yellow-line': data.requiredColor === '黄', 'green-line': data.requiredColor === '緑', 'purple-line': data.requiredColor === '紫' }">
@@ -45,6 +53,12 @@
           </span>
           <span v-if="data.time">
             効果時間:{{ data.time }}秒
+          </span>
+          <span v-if="data.occurrence">
+            発生数:{{ data.occurrence }}個
+          </span>
+          <span v-if="data.erasure">
+            発生数:{{ data.erasure }}個
           </span>
         </div>
       </el-col>
