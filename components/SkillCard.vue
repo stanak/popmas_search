@@ -46,19 +46,64 @@
         </div>
         <div class="elem">
           <span v-if="data.range">
-            効果範囲:{{ data.range }}
+            <table border="1" align="left">
+              <tr>
+                <th class="bold">Lv<th>
+                <th v-for="(row, index) in data.range.split(',')" :key="index">{{ index+1 }}</th>
+              </tr>
+              <tr>
+                <th class="bold">効果範囲<th>
+                <th v-for="(row, index) in data.range.split(',')" :key="index">{{ row }}</th>
+              </tr>
+            </table>
           </span>
           <span v-if="data.change">
-            変化数:{{ data.change }}個
+            <table border="1" align="left">
+              <tr>
+                <th class="bold">Lv<th>
+                <th v-for="(row, index) in data.change.split(',')" :key="index">{{ index+1 }}</th>
+              </tr>
+              <tr>
+                <th class="bold">変化数<th>
+                <th v-for="(row, index) in data.change.split(',')" :key="index">{{ row }}</th>
+              </tr>
+            </table>
           </span>
           <span v-if="data.time">
-            効果時間:{{ data.time }}秒
+            <table border="1" align="left">
+              <tr>
+                <th class="bold">Lv<th>
+                <th v-for="(row, index) in data.time.split(',')" :key="index">{{ index+1 }}</th>
+              </tr>
+              <tr>
+                <th class="bold">変化数<th>
+                <th v-for="(row, index) in data.time.split(',')" :key="index">{{ row }}</th>
+              </tr>
+            </table>
           </span>
           <span v-if="data.occurrence">
-            発生数:{{ data.occurrence }}個
+            <table border="1" align="left">
+              <tr>
+                <th class="bold">Lv<th>
+                <th v-for="(row, index) in data.occurrence.split(',')" :key="index">{{ index+1 }}</th>
+              </tr>
+              <tr>
+                <th class="bold">変化数<th>
+                <th v-for="(row, index) in data.occurrence.split(',')" :key="index">{{ row }}</th>
+              </tr>
+            </table>
           </span>
           <span v-if="data.erasure">
-            発生数:{{ data.erasure }}個
+            <table border="1" align="left">
+              <tr>
+                <th class="bold">Lv<th>
+                <th v-for="(row, index) in data.erasure.split(',')" :key="index">{{ index+1 }}</th>
+              </tr>
+              <tr>
+                <th class="bold">変化数<th>
+                <th v-for="(row, index) in data.erasure.split(',')" :key="index">{{ row }}</th>
+              </tr>
+            </table>
           </span>
         </div>
       </el-col>
@@ -68,6 +113,11 @@
 
 <script>
 export default {
+  created () {
+    if (this.data.change) {
+      console.log(this.data.change.split(','))
+    }
+  },
   props: {
     data: {
       type: Object,
@@ -76,10 +126,6 @@ export default {
     attributeImgUrl: {
       type: Object,
       require: true
-    }
-  },
-  data () {
-    return {
     }
   }
 }
@@ -122,5 +168,8 @@ export default {
 }
 .center {
   text-align: center;
+}
+.bold {
+  font-weight: bold;
 }
 </style>
