@@ -4,7 +4,7 @@
       <h2>ポプマスデータ検索</h2>
       <ul>
         <li>
-          ポプマスのデータを多様な絞り込みで一覧します。ユニット結成の参考にどうぞ。何かの役に立ったら<a href="https://seesaawiki.jp/aiko_takamori/">高森藍子</a>を少し応援してやってください。
+          ポプマスのデータを多様な絞り込みで一覧します。スキル部をクリックすると、そのスキルを使えるアイドル名・アイドルの属性一覧が出てきます。スキルとマイクの組み合わせの最大化を検討する等、ユニット結成の参考にどうぞ。何かの役に立ったら<a href="https://seesaawiki.jp/aiko_takamori/">高森藍子</a>を少し応援してやってください。
         </li>
         <li>
           データである<a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>と<a href="https://drive.google.com/drive/folders/1JNlFbd7RJ9O5OlBso6VZY-pT3NCVCS_A?usp=sharing">Drive</a>の編集は誰でもできます。要望とか報告等あれば<a href="https://twitter.com/_starnak">@_starnak</a>まで。
@@ -48,7 +48,7 @@
       </el-form-item>
     </el-form>
     <div v-for="(data, index) in filteredSkillData" :key="index">
-      <SkillCard :data="data" :attributeImgUrl="attributeImgUrl" />
+      <SkillCard :data="data" :attributeImgUrl="attributeImgUrl" :idolData="idolData"/>
     </div>
   </div>
 </template>
@@ -74,7 +74,8 @@ export default {
     const response = await jsonp(resource, { callbackName: 'callbackFunction' })
     return {
       skillData: response.skill,
-      attributeImgUrl: response.attribute
+      attributeImgUrl: response.attribute,
+      idolData: response.idol
     }
   },
   data () {
