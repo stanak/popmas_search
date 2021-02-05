@@ -2,17 +2,18 @@
   <div>
     <div class="summary">
       <h2>ポプマスデータ検索</h2>
-      <ul>
-        <li>
-          ポプマスのデータを多様な絞り込みで一覧します。スキル部をクリックすると、そのスキルを使えるアイドル名・アイドルの属性一覧が出てきます。スキルとマイクの組み合わせの最大化を検討する等、ユニット結成の参考にどうぞ。何かの役に立ったら<a href="https://seesaawiki.jp/aiko_takamori/">高森藍子</a>を少し応援してやってください。
-        </li>
-        <li>
-          データである<a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>と<a href="https://drive.google.com/drive/folders/1JNlFbd7RJ9O5OlBso6VZY-pT3NCVCS_A?usp=sharing">Drive</a>の編集は誰でもできます。要望とか報告等あれば<a href="https://twitter.com/_starnak">@_starnak</a>まで。
-        </li>
-        <li>
-          技術的には、<a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>をapps scriptで<a :href="resource">json</a>に変換しています。このページのソースコードは<a href="https://github.com/stanak/popmas_search">ここ</a>です。
-        </li>
-      </ul>
+      <p class="margin">
+        ポプマスのデータを多様な絞り込みで一覧します。スキルの並び順はゲーム内表示順を属性順に指定したときと同じです。スキル部分をクリックすると、そのスキルを使えるアイドル名・アイドルの属性一覧が出てきます。
+      </p>
+      <p class="margin">
+        スキルとマイクの組み合わせの最大化を検討する等、ユニット結成の参考にどうぞ。何かの役に立ったら<a href="https://seesaawiki.jp/aiko_takamori/">高森藍子</a>を少し応援してやってください。
+      </p>
+      <p class="margin">
+        データである<a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>と<a href="https://drive.google.com/drive/folders/1JNlFbd7RJ9O5OlBso6VZY-pT3NCVCS_A?usp=sharing">Drive</a>の編集は誰でもできます。要望とか報告等あれば<a href="https://twitter.com/_starnak">@_starnak</a>まで。
+      </p>
+      <p class="margin">
+        技術的には、<a href="https://docs.google.com/spreadsheets/d/1DnNpbOu1PoKKkuc1-gfaf842pACKGAG19NOFdJkSJrk/edit#gid=0">スプレッドシート</a>をapps scriptで<a :href="resource">json</a>に変換しています。このページのソースコードは<a href="https://github.com/stanak/popmas_search">ここ</a>です。
+      </p>
     </div>
     <el-form ref="form" :model="form" label-width="120px" class="form">
       <el-form-item label="名前">
@@ -212,5 +213,8 @@ export default {
 }
 .summary {
   margin: 50px;
+}
+.margin {
+  margin: 10px;
 }
 </style>
