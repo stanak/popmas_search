@@ -106,15 +106,15 @@
                 </tr>
               </table>
             </span>
-            <span v-if="data.scoreMutiplier">
+            <span v-if="data.scoreMultiplier">
               <table border="1" align="left">
                 <tr>
                   <th class="bold">Lv<th>
-                  <th v-for="(row, index) in data.scoreMutiplier.split(',')" :key="index">{{ index+1 }}</th>
+                  <th v-for="(row, index) in data.scoreMultiplier.split(',')" :key="index">{{ index+1 }}</th>
                 </tr>
                 <tr>
                   <th class="bold">スコア倍率<th>
-                  <th v-for="(row, index) in data.scoreMutiplier.split(',')" :key="index">{{ row }}</th>
+                  <th v-for="(row, index) in data.scoreMultiplier.split(',')" :key="index">{{ row }}</th>
                 </tr>
               </table>
             </span>
